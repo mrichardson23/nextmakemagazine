@@ -11,10 +11,14 @@
 
   	<h2>add:</h2>
   	<form action="" method="post">
-  		<div>Volume number <input type="text" name="volumeNumber"></div>
-  		<div>Date (MM/DD/YYYY): <input type="text" name="date"></div>
-  		<div>Password: <input type="text" name="password"></div>
-  		<div><input type="submit" value="Add Date"></div>
+      <div>Password: <input type="text" name="password"></div>
+      {% if volumes is defined %}
+    		<div>Volume number <input type="text" name="volumeNumber"></div>
+    		<div>Date (MM/DD/YYYY): <input type="text" name="date"></div>
+        <div><input type="submit" value="Add Date"></div>
+      {% else %}
+        <div><input type="submit" value="Submit"></div>
+      {% endif %}
   	</form>
   </body>
 </html>
