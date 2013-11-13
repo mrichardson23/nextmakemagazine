@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+  	<ul>
+  	{% for volume in volumes %}
+  		<li>{{volume.volumeNumber}}: {{volume.date.strftime("%m/%d/%Y")}}</li>
+  	{% endfor %}
+ 	</ul>
+  	<p>{{message}}</p>
+
+  	<h2>add:</h2>
+  	<form action="" method="post">
+  		<div>Volume number <input type="text" name="volumeNumber"></div>
+  		<div>Date (MM/DD/YYYY): <input type="text" name="date"></div>
+  		<div>Password: <input type="text" name="password"></div>
+  		<div><input type="submit" value="Add Date"></div>
+  	</form>
+  </body>
+</html>
+{% endautoescape %}
