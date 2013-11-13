@@ -49,7 +49,7 @@ class JSONResponse(webapp2.RequestHandler):
 		}
 		self.response.write(json.encode(json_values))
 
-class ArduinoResponse(webapp2.RequestHandler):
+class SimpleResponse(webapp2.RequestHandler):
 	def get(self):
 		now = datetime.datetime.now()
 		volumes_query = Volume.query(Volume.date > now, ancestor=list_key()).order(Volume.date)
@@ -97,5 +97,5 @@ application = webapp2.WSGIApplication([
 	('/', MainPage),
 	('/admin', Admin),
 	('/json', JSONResponse),
-	('/arduino', ArduinoResponse)
+	('/simple', SimpleResponse)
 ], debug=True)
