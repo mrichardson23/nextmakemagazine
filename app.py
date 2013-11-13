@@ -11,7 +11,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 	autoescape=True)
 
 DEFAULT_LIST_NAME = 'default_list'
-ADMIN_PASSWORD = 'whatever'
+ADMIN_PASSWORD = 'jklpop'
 
 def list_key(list_name=DEFAULT_LIST_NAME):
 	"""Constructs a Datastore key for a Guestbook entity with guestbook_name."""

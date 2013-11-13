@@ -1,8 +1,37 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
+<head>
+<style type="text/css">
+body {
+  font-family: Verdana, Geneva, sans-serif;
+}
+h1 {
+	text-align: center;
+	font-size: 1000%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+h2 {
+	text-align: center;
+}
+#container {
+    width: 400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-200px; /* width / -2 */
+    margin-top:-200px; /* height / -2 */
+}
+</style>
+<title>{{daysAway}} days until a new MAKE!</title>
+</head>
   <body>
-  	<p>Volume {{volumeNumber}} of MAKE will hit news stands in {{daysAway}} days.</p>
+  <div id="container">
+  	<h2>Volume {{volumeNumber}} of MAKE will hit newsstands in</h2>
+  	<h1>{{daysAway}}</h1>
+  	<h2>days.</h2>
+  </div>
   </body>
 </html>
 {% endautoescape %}
