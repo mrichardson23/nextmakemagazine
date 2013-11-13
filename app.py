@@ -28,9 +28,12 @@ class MainPage(webapp2.RequestHandler):
 		volumes_query = Volume.query(Volume.date > now, ancestor=list_key()).order(Volume.date)
 		volumes = volumes_query.fetch(1)
 		timeDelt = volumes[0].date - now
+		timeDelt = timeDelt + datetime.timedelta(hours=5)
+		hours = timeDelt.total_seconds()/3600
 		volumeNumber = volumes[0].volumeNumber
 		template_values = {
-			'daysAway': timeDelt.days + 1,
+			'daysAway': timeDelt.days,
+			'totalHours': round(hours, 0),
 			'volumeNumber': volumeNumber
 		}
 		template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -42,10 +45,13 @@ class JSONResponse(webapp2.RequestHandler):
 		volumes_query = Volume.query(Volume.date > now, ancestor=list_key()).order(Volume.date)
 		volumes = volumes_query.fetch(1)
 		timeDelt = volumes[0].date - now
+		timeDelt = timeDelt + datetime.timedelta(hours=5)
+		hours = timeDelt.total_seconds()/3600
 		volumeNumber = volumes[0].volumeNumber
 		json_values = {
 			'volumeNumber': volumeNumber,
-			'daysAway ' : timeDelt.days + 1
+			'daysAway': timeDelt.days,
+			'totalHours': round(hours, 0)
 		}
 		self.response.write(json.encode(json_values))
 
@@ -55,7 +61,9 @@ class SimpleResponse(webapp2.RequestHandler):
 		volumes_query = Volume.query(Volume.date > now, ancestor=list_key()).order(Volume.date)
 		volumes = volumes_query.fetch(1)
 		timeDelt = volumes[0].date - now
-		self.response.write(timeDelt.days + 1)
+		timeDelt = timeDelt + datetime.timedelta(hours=5)
+		hours = timeDelt.total_seconds()/3600
+		self.response.write(int(round(hours)))
 
 class Admin(webapp2.RequestHandler):
 	def get(self):
